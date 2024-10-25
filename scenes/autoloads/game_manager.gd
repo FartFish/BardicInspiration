@@ -116,3 +116,21 @@ func get_points_in_cone(origin:Vector2i, target:Vector2i, angle:float, include_o
 		
 	
 	return points
+
+func get_adjacent_points(origin:Vector2i, include_corners:bool = true, include_origin:bool = false) -> Array:
+	if !level:
+		return []
+	var points = []
+	
+	for x in range( max( 0, origin.x - 1 ), min( origin.x + 2, level.tiles.size() ) ):
+		for y in range( max( 0, origin.y - 1), min( origin.y + 2, level.tiles[0].size() ) ):
+			if Vector2i(x, y) != origin:
+				if include_corners or (
+					x == origin.x or y == origin.y
+				):
+					points.append(Vector2i(x, y))
+	
+	if include_origin:
+		points.insert(0, origin)
+	
+	return points
