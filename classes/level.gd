@@ -79,30 +79,19 @@ func act_move(unit:GameObject, tile:Vector2i, set_flip:bool = false, force_move:
 	return true
 
 
-func act_place_object(object:GameObject, point:Vector2i, layer:String, ignore_navigation:bool = false, source = null) -> GameObject:
+func act_place_object(object:GameObject, point:Vector2i, source = null) -> GameObject:
 	if point.x < 0 or point.x > tiles.size() - 1 or point.y < 0 or point.y > tiles.size() - 1:
 		print("ERROR: act_place_object: out of bounds")
 		return null
 	
 	object = object.duplicate()
-	var nav_tags = object.navigation_tags
 	
-	var tile_valid = ignore_navigation and !tiles[point.x][point.y].get(layer)
-	if !tile_valid:
-		for tag in nav_tags:
-			if tiles[point.x][point.y].context and (
-			(tag in tiles[point.x][point.y].context.navigation_tags or ignore_navigation) and !tiles[point.x][point.y].get(layer) ):
-				tile_valid = true
-				object.x = point.x
-				object.y = point.y
-				tiles[point.x][point.y].set(layer, object)
-				break
-	else:
+	var tile_valid = !tiles[point.x][point.y]
+	if tile_valid:
 		object.x = point.x
 		object.y = point.y
-		tiles[point.x][point.y].set(layer, object)
-	
-	if !tile_valid and !(ignore_navigation and !tiles[point.x][point.y].get(layer) ):
+		tiles[point.x][point.y] = object
+	else:
 		var adjacent_points = GameManager.get_adjacent_points(point)
 		var temp_adjacent_points = adjacent_points.duplicate()
 		for p in adjacent_points.size():
@@ -129,19 +118,3 @@ func act_place_object(object:GameObject, point:Vector2i, layer:String, ignore_na
 	update_navigators()
 	
 	return object
-
-func act_summon(unit:Unit, point:Vector2i, team:Team = null, source = null, forced_index:int = -1) -> Unit:
-	unit = act_place_object(unit, point, "unit", false, source)
-	if unit:
-		if team:
-			unit.team = team
-		unit.hp = unit.hp_max
-		if forced_index == -1:
-			units.append(unit)
-		else:
-			units.insert(forced_index, unit)
-	return unit
-
-func act_place_item(item:Item, point:Vector2i, source = null) -> Item:
-	item = act_place_object(item, point, "item", true, source)
-	return item

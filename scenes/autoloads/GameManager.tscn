@@ -1,8 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bict0cph48iom"]
 
-[sub_resource type="GDScript" id="GDScript_xbidb"]
-script/source = "extends Node
-"
+[ext_resource type="Script" path="res://scenes/autoloads/game_manager.gd" id="1_ku7xd"]
 
 [node name="GameManager" type="Node"]
-script = SubResource("GDScript_xbidb")
+script = ExtResource("1_ku7xd")
