@@ -3,7 +3,6 @@ class_name SpellBehaviorSimpleActSummon extends SpellBehaviorGetComplexPoints
 
 @export var summons:Array[GameObject]
 @export var num_summons:Array[int] = [1]
-@export var layer:String = "unit"
 
 @export var summon_all:bool = false
 
@@ -26,7 +25,7 @@ func handle(caster:GameObject, point:Vector2i, source = null):
 				if u:
 					u.team = caster.team
 
-func get_description(item:Item) -> String:
+func get_description() -> String:
 	var desc = ""
 	
 	desc += "Summons "

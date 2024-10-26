@@ -18,9 +18,6 @@ func handle(caster:GameObject, point:Vector2i, source = null):
 	if rotate:
 		angle = (Vector2(point) - Vector2(caster.x, caster.y) ).angle()
 	
-	if !tags:
-		tags = [GameLoader.tags["smashing"] ]
-	
 	if draw_path:
 		for p in GameManager.get_points_in_line(Vector2i(caster.x, caster.y), point, false):
 			for t in tags.size():
@@ -41,11 +38,11 @@ func handle(caster:GameObject, point:Vector2i, source = null):
 		await GameManager.wait(GameManager.anim_speed * 4.1)
 
 
-func get_description(item:Item) -> String:
+func get_description() -> String:
 	var desc = ""
 	
 	if !tags:
-		tags = [GameLoader.tags["smashing"] ]
+		tags = []
 	
 	desc += "Deals "
 	

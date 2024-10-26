@@ -24,7 +24,7 @@ func get_impacted_tiles(caster:GameObject, point:Vector2i, source = null):
 	
 	return tiles
 
-func get_description(spell:Spell) -> String:
+func get_description() -> String:
 	return ""
 
 func _get_icon() -> Image:
