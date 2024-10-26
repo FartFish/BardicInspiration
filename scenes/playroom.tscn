@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://bpgg34k7jcwie"]
+[gd_scene load_steps=5 format=3 uid="uid://bpgg34k7jcwie"]
+
+[ext_resource type="PackedScene" uid="uid://b2dqu3lrks6j8" path="res://scenes/game_object_display.tscn" id="1_mwibi"]
+[ext_resource type="Script" path="res://classes/game_object.gd" id="2_bkx50"]
+[ext_resource type="Script" path="res://classes/spell.gd" id="3_7s7ff"]
+
+[sub_resource type="Resource" id="Resource_lxova"]
+script = ExtResource("2_bkx50")
+x = 0
+y = 0
+spells = Array[ExtResource("3_7s7ff")]([])
 
 [node name="Playroom" type="Node2D"]
+
+[node name="GameObjectDisplays" type="Node2D" parent="."]
+
+[node name="GameObjectDisplay" parent="GameObjectDisplays" instance=ExtResource("1_mwibi")]
+game_object = SubResource("Resource_lxova")

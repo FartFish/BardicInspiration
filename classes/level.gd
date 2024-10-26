@@ -99,22 +99,13 @@ func act_place_object(object:GameObject, point:Vector2i, source = null) -> GameO
 			adjacent_points[p] = temp_adjacent_points[new_index]
 		
 		for p in adjacent_points:
-			if ignore_navigation:
-				if !tiles[p.x][p.y].get(layer):
-					tile_valid = true
-					object = act_place_object(object, p, layer, ignore_navigation, source)
-			else:
-				for tag in nav_tags:
-					if tiles[p.x][p.y].context and ( 
-						(tag in tiles[p.x][p.y].context.navigation_tags or ignore_navigation) and !tiles[p.x][p.y].get(layer) ):
-						tile_valid = true
-						object = act_place_object(object, p, layer, ignore_navigation, source)
+			if !tiles[p.x][p.y]:
+				tile_valid = true
+				object = act_place_object(object, p, source)
 			if tile_valid:
 				break
 	
 	if !tile_valid:
 		return null
-	
-	update_navigators()
 	
 	return object
