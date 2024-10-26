@@ -8,7 +8,7 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cba7o"]
 gradient = SubResource("Gradient_165x6")
-width = 16
+width = 48
 height = 16
 
 [node name="GameObjectDisplay" type="Node2D"]
@@ -16,3 +16,4 @@ script = ExtResource("1_nn61l")
 
 [node name="TextureDisplay" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_cba7o")
+hframes = 3

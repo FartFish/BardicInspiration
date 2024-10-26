@@ -3,6 +3,7 @@ class_name GameObject extends Resource
 @export var x:int = 0
 @export var y:int = 0
 
+@export var texture:Texture2D
 
 @export var spells:Array[Spell] = []
 signal spell_cast
