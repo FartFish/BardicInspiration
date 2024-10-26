@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://rdnw66sm1775"]
+
+[ext_resource type="Script" path="res://scenes/tile_display.gd" id="1_slsbb"]
+
+[sub_resource type="Gradient" id="Gradient_wm4be"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8fgj4"]
+gradient = SubResource("Gradient_wm4be")
+width = 16
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_40m4h"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0.384314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qs2q8"]
+gradient = SubResource("Gradient_40m4h")
+width = 16
+height = 16
+
+[node name="TileDisplay" type="Node2D"]
+script = ExtResource("1_slsbb")
+
+[node name="Button" type="TextureButton" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = SubResource("GradientTexture2D_8fgj4")
+texture_hover = SubResource("GradientTexture2D_qs2q8")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

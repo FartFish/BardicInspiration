@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameObject" load_steps=3 format=3 uid="uid://bfwee6qvvpue5"]
+
+[ext_resource type="Script" path="res://classes/game_object.gd" id="1_xybth"]
+[ext_resource type="Script" path="res://classes/spell.gd" id="2_pvqa5"]
+
+[resource]
+script = ExtResource("1_xybth")
+x = 0
+y = 0
+spells = Array[ExtResource("2_pvqa5")]([])

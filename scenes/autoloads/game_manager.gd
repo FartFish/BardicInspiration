@@ -1,9 +1,9 @@
 extends Node
 
-var level:Level
+var level:Level = Level.new(24, 21)
 @export var displayed_tile_size:int = 16
 
-
+@onready var player = preload("res://resources/game_objects/player.tres")
 
 
 
