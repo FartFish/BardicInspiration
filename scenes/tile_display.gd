@@ -5,6 +5,7 @@ extends Node2D
 
 
 func _on_button_pressed() -> void:
-	if !GameManager.level.tiles[x][y]:
-		GameManager.player.x = x
-		GameManager.player.y = y
+	GameManager.update_navigator()
+	var path = GameManager.navigator.get_id_path(GameManager.player.as_vector(), Vector2i(x, y) )
+	if path.size() > 1:
+		GameManager.level.act_move(GameManager.player, path[1] )

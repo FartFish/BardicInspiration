@@ -5,6 +5,8 @@ var level:Level = Level.new(24, 21)
 
 @onready var player = preload("res://resources/game_objects/player.tres")
 
+@onready var navigator = AStarGrid2D.new()
+
 
 
 #Point Getters
@@ -134,3 +136,14 @@ func get_adjacent_points(origin:Vector2i, include_corners:bool = true, include_o
 		points.insert(0, origin)
 	
 	return points
+
+func update_navigator():
+	navigator.region = Rect2i(0, 0, level.tiles.size(), level.tiles[0].size() )
+	navigator.update()
+	for x in level.tiles.size():
+		for y in level.tiles[0].size():
+			if level.tiles[x][y]:
+				navigator.set_point_solid(Vector2i(x, y) )
+			else:
+				navigator.set_point_solid(Vector2i(x, y), false)
+	navigator.update()

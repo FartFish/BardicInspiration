@@ -50,31 +50,30 @@ func act_move(unit:GameObject, tile:Vector2i, set_flip:bool = false, force_move:
 	var next_tile = tiles[tile.x][tile.y]
 	
 	if set_flip and unit.x != tile.x:
-		unit.texture_flipped = (unit.x > tile.x)
+		#unit.texture_flipped = (unit.x > tile.x)
+		pass
 	
-	if next_tile.unit != unit:
-		if next_tile.unit:
-			
-			var temp_unit = next_tile.unit
-			if force_move:
-				unit.x = tile.x
-				unit.y = tile.y
-				next_tile.unit = unit
-				
-				temp_unit.x = prev_tile.x
-				temp_unit.y = prev_tile.y
-				prev_tile.unit = temp_unit
-			else:
-				return false
-		else:
+	if next_tile:
+		if force_move:
+			var temp_prev = Vector2i(unit.x, unit.y)
 			unit.x = tile.x
 			unit.y = tile.y
-			next_tile.unit = unit
+			#next_tile.unit = unit
 			
-			prev_tile.unit = null
-		
+			var temp_unit = next_tile
+			temp_unit.x = temp_prev.x
+			temp_unit.y = temp_prev.y
+			
+			tiles[unit.x][unit.y] = unit
+			tiles[temp_unit.x][temp_unit].y = temp_unit
+			#prev_tile.unit = temp_unit
+	else:
+		tiles[unit.x][unit.y] = null
+		unit.x = tile.x
+		unit.y = tile.y
+		tiles[unit.x][unit.y] = unit
 	
-	update_navigators()
+	GameManager.update_navigator()
 	
 	return true
 
