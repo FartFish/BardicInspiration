@@ -164,3 +164,8 @@ func act_place_object(object:GameObject, point:Vector2i, source = null) -> GameO
 	display.game_object = created_object
 	GameManager.get_node("/root/Playroom/GameObjectDisplays").add_child(display)
 	return created_object
+
+func deal_damage(point:Vector2i, damage:int, texture:Texture2D = null):
+	if level.tiles[point.x][point.y]:
+		var obj = level.tiles[point.x][point.y]
+		obj.hp -= damage

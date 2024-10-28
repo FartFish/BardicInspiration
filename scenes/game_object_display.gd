@@ -17,3 +17,6 @@ func _process(delta):
 			position = targ_pos
 		
 		$TextureDisplay.texture = game_object.texture
+		
+		if !game_object.is_alive():
+			queue_free()
