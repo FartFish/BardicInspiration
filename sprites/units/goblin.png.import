@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://cdejjimv0idg1"
+=======
+uid="uid://b1bvbttexx58"
+>>>>>>> origin/main
 path="res://.godot/imported/goblin.png-acf271ce6e765858e7398acdd2572a90.ctex"
 metadata={
 "vram_texture": false
