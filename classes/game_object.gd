@@ -1,5 +1,7 @@
 class_name GameObject extends Resource
 
+@export var hp:int = 1
+
 @export var x:int = 0
 @export var y:int = 0
 
@@ -17,3 +19,6 @@ func as_vector() -> Vector2i:
 func get_action():
 	if behavior:
 		behavior.get_action(self)
+
+func is_alive():
+	return hp > 0

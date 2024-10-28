@@ -147,3 +147,8 @@ func update_navigator():
 			else:
 				navigator.set_point_solid(Vector2i(x, y), false)
 	navigator.update()
+
+func deal_damage(point:Vector2i, damage:int, texture:Texture2D = null):
+	if level.tiles[point.x][point.y]:
+		var obj = level.tiles[point.x][point.y]
+		obj.hp -= damage
