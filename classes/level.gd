@@ -24,8 +24,7 @@ func _init(width:int = 1, height:int = 1):
 			
 			arr.append(null )
 		tiles.append(arr)
-
-
+		
 func update_doors():
 	pass
 	#if tiles and tiles[0]:

@@ -7,7 +7,16 @@ var level:Level = Level.new(24, 21)
 
 @onready var navigator = AStarGrid2D.new()
 
-
+func _ready():
+	var num_enemies = 20
+	var rng = RandomNumberGenerator.new()
+	for i in range(num_enemies):
+		var goblin = load("res://resources/game_objects/goblin.tres")
+		#choose random tile
+		var x_pos = rng.randi_range(1,level.tiles.size() - 1)
+		var y_pos = rng.randi_range(1,level.tiles[0].size() - 1)
+		var rand_tile = Vector2i(x_pos,y_pos)
+		goblin = GameManager.act_place_object(goblin,rand_tile)
 
 #Point Getters
 func get_points_in_line(origin:Vector2i, target:Vector2i, include_origin:bool = true) -> Array:
@@ -147,3 +156,11 @@ func update_navigator():
 			else:
 				navigator.set_point_solid(Vector2i(x, y), false)
 	navigator.update()
+	
+func act_place_object(object:GameObject, point:Vector2i, source = null) -> GameObject:
+	var created_object = level.act_place_object(object,point,source)
+	var display = load("res://scenes/game_object_display.tscn").instantiate()
+	display.position = Vector2(created_object.x * 16, created_object.y * 16) + Vector2(8, 8)
+	display.game_object = created_object
+	GameManager.get_node("/root/Playroom/GameObjectDisplays").add_child(display)
+	return created_object

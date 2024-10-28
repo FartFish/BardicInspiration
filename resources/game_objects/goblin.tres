@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GameObject" load_steps=5 format=3 uid="uid://b0u2obl1vdsii"]
+
+[ext_resource type="Script" path="res://classes/game_object.gd" id="1_1o542"]
+[ext_resource type="Script" path="res://classes/enemy_behavior.gd" id="1_hka1g"]
+[ext_resource type="Script" path="res://classes/spell.gd" id="2_8ofxi"]
+[ext_resource type="Texture2D" uid="uid://8s2u3wr7ru0r" path="res://sprites/units/goblin.png" id="4_tfggl"]
+
+[resource]
+script = ExtResource("1_1o542")
+x = 0
+y = 0
+texture = ExtResource("4_tfggl")
+behavior = ExtResource("1_hka1g")
+spells = Array[ExtResource("2_8ofxi")]([])
