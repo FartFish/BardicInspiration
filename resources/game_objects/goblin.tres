@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("1_1o542")
+hp = 1
 x = 0
 y = 0
 texture = ExtResource("4_tfggl")

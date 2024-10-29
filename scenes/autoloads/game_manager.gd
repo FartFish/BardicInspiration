@@ -16,7 +16,7 @@ func _ready():
 		var x_pos = rng.randi_range(1,level.tiles.size() - 1)
 		var y_pos = rng.randi_range(1,level.tiles[0].size() - 1)
 		var rand_tile = Vector2i(x_pos,y_pos)
-		goblin = GameManager.act_place_object(goblin,rand_tile)
+		goblin = GameManager.act_place_object(goblin,rand_tile)	
 
 #Point Getters
 func get_points_in_line(origin:Vector2i, target:Vector2i, include_origin:bool = true) -> Array:
